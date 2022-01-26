@@ -1,4 +1,3 @@
-import PIL
 from scipy.spatial import distance as dist
 from imutils import perspective
 from imutils import contours
@@ -14,7 +13,7 @@ def midpoint(ptA, ptB):
 def MakeImageAnalysisGreatAgain(path_to_file, width_of_the_first_element):
     result = []
     image = cv2.imread(path_to_file)
-    x,y,z=image.shape
+    x, y, z = image.shape
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     gray = cv2.GaussianBlur(gray, (7, 7), 0)
 
@@ -31,7 +30,7 @@ def MakeImageAnalysisGreatAgain(path_to_file, width_of_the_first_element):
 
     for c in cnts:
 
-        if cv2.contourArea(c) < x*y/300:
+        if cv2.contourArea(c) < x * y / 300:
             continue
         orig = image.copy()
         box = cv2.minAreaRect(c)
@@ -42,14 +41,12 @@ def MakeImageAnalysisGreatAgain(path_to_file, width_of_the_first_element):
         cv2.drawContours(orig, [box.astype("int")], -1, (0, 0, 0), 2)
         cv2.drawContours(orig, [box.astype("int")], -1, (255, 255, 255), 1)
 
-
         (tl, tr, br, bl) = box
         (tltrX, tltrY) = midpoint(tl, tr)
         (blbrX, blbrY) = midpoint(bl, br)
 
         (tlblX, tlblY) = midpoint(tl, bl)
         (trbrX, trbrY) = midpoint(tr, br)
-
 
         dA = dist.euclidean((tltrX, tltrY), (blbrX, blbrY))
         dB = dist.euclidean((tlblX, tlblY), (trbrX, trbrY))

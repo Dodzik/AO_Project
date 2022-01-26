@@ -42,13 +42,13 @@ def nextElement():
             piv = piv + 1
         else:
             piv = 0
-        img = img.resize((1500, 750), Image.ANTIALIAS)
+        img = img.resize((1000, 750), Image.ANTIALIAS)
         img = ImageTk.PhotoImage(img)
         changeImage(img)
 
 
 def changeImage(img):
-    picture.create_image(1500, 0, anchor=NE, image=img)
+    picture.create_image(1000, 0, anchor=NE, image=img)
     mainloop()
 
 
@@ -61,12 +61,12 @@ def loadPicture():
         if file_path != "" and width != 0:
             MakeImageAnalysisGreatAgain(file_path, width)
         img = Image.open(file_path)
-        img = img.resize((1500, 750), Image.ANTIALIAS)
+        img = img.resize((1000, 750), Image.ANTIALIAS)
         img = ImageTk.PhotoImage(img)
         changeImage(img)
     except:
         img = Image.open("images/img.png")
-        img = img.resize((1500, 750), Image.ANTIALIAS)
+        img = img.resize((1000, 750), Image.ANTIALIAS)
         img = ImageTk.PhotoImage(img)
         changeImage(img)
 
@@ -75,7 +75,7 @@ width = 0
 file_path = ""
 root = Tk()
 
-root.geometry('1800x800')
+root.geometry('1300x800')
 root.configure(background='#F0F8FF')
 root.title('IMAGE ANALYSIS PROJECT')
 
@@ -86,7 +86,7 @@ Button(root, text='Next', bg='#F0F8FF', font=("Times New Roman", 12, 'normal'), 
 tInput = Entry(root)
 tInput.place(x=57, y=276)
 
-picture = Canvas(root, height=750, width=1500)
+picture = Canvas(root, height=750, width=1000)
 picture.place(x=273, y=16)
 Button(root, text='Upload Photo', bg='#F0F8FF', font=("Times New Roman", 12, 'normal'), command=loadPicture).place(x=62, y=38)
 
