@@ -57,16 +57,16 @@ def MakeImageAnalysisGreatAgain(path_to_file, width_of_the_first_element):
         dimA = dA / pixelsPerMetric
         dimB = dB / pixelsPerMetric
 
-        cv2.putText(orig, "{:.1f}cm".format(dimA),
+        cv2.putText(orig, "{:.1f}cm".format(dimB),
                     (int(tltrX - 15), int(tltrY - 10)), cv2.FONT_HERSHEY_SIMPLEX,
                     0.65, (0, 0, 0), 2)
-        cv2.putText(orig, "{:.1f}cm".format(dimB),
+        cv2.putText(orig, "{:.1f}cm".format(dimA),
                     (int(trbrX + 10), int(trbrY)), cv2.FONT_HERSHEY_SIMPLEX,
                     0.65, (0, 0, 0), 2)
-        cv2.putText(orig, "{:.1f}cm".format(dimA),
+        cv2.putText(orig, "{:.1f}cm".format(dimB),
                     (int(tltrX - 15), int(tltrY - 10)), cv2.FONT_HERSHEY_SIMPLEX,
                     0.65, (255, 255, 255), 1)
-        cv2.putText(orig, "{:.1f}cm".format(dimB),
+        cv2.putText(orig, "{:.1f}cm".format(dimA),
                     (int(trbrX + 10), int(trbrY)), cv2.FONT_HERSHEY_SIMPLEX,
                     0.65, (255, 255, 255), 1)
         result.append(orig)
