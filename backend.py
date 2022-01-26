@@ -1,3 +1,4 @@
+import PIL
 from scipy.spatial import distance as dist
 from imutils import perspective
 from imutils import contours
@@ -13,7 +14,7 @@ def midpoint(ptA, ptB):
 def MakeImageAnalysisGreatAgain(path_to_file, width_of_the_first_element):
     result = []
     image = cv2.imread(path_to_file)
-
+    x,y,z=image.shape
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     gray = cv2.GaussianBlur(gray, (7, 7), 0)
 
@@ -29,7 +30,8 @@ def MakeImageAnalysisGreatAgain(path_to_file, width_of_the_first_element):
     pixelsPerMetric = None
 
     for c in cnts:
-        if cv2.contourArea(c) < 100:
+
+        if cv2.contourArea(c) < x*y/300:
             continue
         orig = image.copy()
         box = cv2.minAreaRect(c)
